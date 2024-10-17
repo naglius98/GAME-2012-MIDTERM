@@ -148,14 +148,27 @@ for all vertices
 
     Vertices vertices(30000);
 
+    Vector3 position1; // current position
+    Vector3 position2; // previous position
+
+    for (int i; i < 30000; i++) // for all vertices
+    {
+        int r = rand() % 3; // n = rand() % 3
+        position1 = (position2 + positions[r]) / 2; // current position = (previous position + triangle position[n]) / 2
+        vertices[i].position = position1;
+        vertices[i].color = positions[r];
+    }
+
+
     // Task 2 -- upload vertices to the GPU
     /* Upload vertices to the CPU.
      * Default shader is bound: position is 0th  input, colour is 1st input.
      * AAssociate vertex data with an array and bind.
-     * Magic!
-
+     * Magic! */
 
     GLuint vao, vbo;
+
+
 
     while (!glfwWindowShouldClose(window))
     {
