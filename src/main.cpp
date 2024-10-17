@@ -151,7 +151,7 @@ for all vertices
     Vector3 position1; // current position
     Vector3 position2; // previous position
 
-    for (int i; i < 30000; i++) // for all vertices
+    for (int i = 0 ; i < 30000; i++) // for all vertices
     {
         int r = rand() % 3; // n = rand() % 3
         position1 = (position2 + positions[r]) / 2; // current position = (previous position + triangle position[n]) / 2
