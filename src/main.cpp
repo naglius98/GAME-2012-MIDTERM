@@ -159,7 +159,6 @@ for all vertices
         vertices[i].color = positions[r];
     }
 
-
     // Task 2 -- upload vertices to the GPU
     /* Upload vertices to the CPU.
      * Default shader is bound: position is 0th  input, colour is 1st input.
@@ -167,6 +166,18 @@ for all vertices
      * Magic! */
 
     GLuint vao, vbo;
+
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+    glEnableVertexAttribArray(1);
 
 
 
