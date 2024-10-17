@@ -139,9 +139,22 @@ int main()
     };
 
     // Task 1 -- loop through all vertices to assign positions and colors
+
+     /* Vertex triangle[3]
+for all vertices
+	n = rand() % 3
+	current position = (previous position + triangle position[n]) / 2
+	current colour = triangle colour[n] */
+
     Vertices vertices(30000);
 
     // Task 2 -- upload vertices to the GPU
+    /* Upload vertices to the CPU.
+     * Default shader is bound: position is 0th  input, colour is 1st input.
+     * AAssociate vertex data with an array and bind.
+     * Magic!
+
+
     GLuint vao, vbo;
 
     while (!glfwWindowShouldClose(window))
