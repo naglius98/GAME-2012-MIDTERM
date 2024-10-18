@@ -156,7 +156,8 @@ for all vertices
         int r = rand() % 3; // n = rand() % 3
         position1 = (position2 + positions[r]) / 2; // current position = (previous position + triangle position[n]) / 2
         vertices[i].position = position1;
-        vertices[i].color = positions[r];
+        vertices[i].color = colors[r];
+        position2 = position1;
     }
 
     // Task 2 -- upload vertices to the GPU
@@ -176,7 +177,7 @@ for all vertices
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, color));
     glEnableVertexAttribArray(1);
 
 
